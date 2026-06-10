@@ -39,6 +39,9 @@ import AdminDashboard from '../pages/admin/AdminDashboard'
 import AdminUsers from '../pages/admin/AdminUsers'
 import AdminJobs from '../pages/admin/AdminJobs'
 
+// Notification
+import NotificationsPage from '../pages/notifications/NotificationsPage'
+
 function AppRouter() {
   return (
     <BrowserRouter>
@@ -60,6 +63,7 @@ function AppRouter() {
         <Route path="/freelancers" element={<PrivateRoute><PageWrapper><FreelancersPage /></PageWrapper></PrivateRoute>} />
         <Route path="/freelancers/:id" element={<PrivateRoute><PageWrapper><FreelancerProfilePage /></PageWrapper></PrivateRoute>} />
         <Route path="/disputes/:id" element={<PrivateRoute><PageWrapper><DisputePage /></PageWrapper></PrivateRoute>} />
+        <Route path="/notifications" element={<PrivateRoute><PageWrapper><NotificationsPage /></PageWrapper></PrivateRoute>} />
 
         {/* Admin */}
         <Route path="/admin" element={<AdminRoute><PageWrapper><AdminDashboard /></PageWrapper></AdminRoute>} />

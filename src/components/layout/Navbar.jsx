@@ -128,24 +128,25 @@ function Navbar() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="bg-[#111111] border-[#2a2a2a] w-64">
-                  <nav className="flex flex-col gap-4 mt-8">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        to={link.href}
-                        className="text-[#a1a1aa] hover:text-white text-sm transition-colors"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                    <button
-                      onClick={handleLogout}
-                      className="text-red-400 hover:text-red-300 text-sm text-left transition-colors"
+                <span className="sr-only">Navigation Menu</span>
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className="text-[#a1a1aa] hover:text-white text-sm transition-colors"
                     >
-                      Logout
-                    </button>
-                  </nav>
-                </SheetContent>
+                      {link.label}
+                    </Link>
+                  ))}
+                  <button
+                    onClick={handleLogout}
+                    className="text-red-400 hover:text-red-300 text-sm text-left transition-colors"
+                  >
+                    Logout
+                  </button>
+                </nav>
+              </SheetContent>
               </Sheet>
             </>
           ) : (
