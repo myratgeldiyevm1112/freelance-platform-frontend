@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import AdminRoute from './AdminRoute'
+import PageWrapper from '../components/layout/PageWrapper'
 
 // Auth
 import LoginPage from '../pages/auth/LoginPage'
@@ -42,28 +43,28 @@ function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public */}
+        {/* Публичные */}
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
-        {/* Private */}
-        <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
-        <Route path="/jobs" element={<PrivateRoute><JobsPage /></PrivateRoute>} />
-        <Route path="/jobs/create" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} />
-        <Route path="/jobs/:id" element={<PrivateRoute><JobDetailPage /></PrivateRoute>} />
-        <Route path="/proposals" element={<PrivateRoute><ProposalsPage /></PrivateRoute>} />
-        <Route path="/contracts/:id" element={<PrivateRoute><ContractPage /></PrivateRoute>} />
-        <Route path="/chat" element={<PrivateRoute><ChatPage /></PrivateRoute>} />
-        <Route path="/profile" element={<PrivateRoute><MyProfilePage /></PrivateRoute>} />
-        <Route path="/freelancers" element={<PrivateRoute><FreelancersPage /></PrivateRoute>} />
-        <Route path="/freelancers/:id" element={<PrivateRoute><FreelancerProfilePage /></PrivateRoute>} />
-        <Route path="/disputes/:id" element={<PrivateRoute><DisputePage /></PrivateRoute>} />
+        {/* Приватные — все обёрнуты в PageWrapper */}
+        <Route path="/dashboard" element={<PrivateRoute><PageWrapper><DashboardPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/jobs" element={<PrivateRoute><PageWrapper><JobsPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/jobs/create" element={<PrivateRoute><PageWrapper><CreateJobPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/jobs/:id" element={<PrivateRoute><PageWrapper><JobDetailPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/proposals" element={<PrivateRoute><PageWrapper><ProposalsPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/contracts/:id" element={<PrivateRoute><PageWrapper><ContractPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/chat" element={<PrivateRoute><PageWrapper><ChatPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/profile" element={<PrivateRoute><PageWrapper><MyProfilePage /></PageWrapper></PrivateRoute>} />
+        <Route path="/freelancers" element={<PrivateRoute><PageWrapper><FreelancersPage /></PageWrapper></PrivateRoute>} />
+        <Route path="/freelancers/:id" element={<PrivateRoute><PageWrapper><FreelancerProfilePage /></PageWrapper></PrivateRoute>} />
+        <Route path="/disputes/:id" element={<PrivateRoute><PageWrapper><DisputePage /></PageWrapper></PrivateRoute>} />
 
         {/* Admin */}
-        <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-        <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
-        <Route path="/admin/jobs" element={<AdminRoute><AdminJobs /></AdminRoute>} />
+        <Route path="/admin" element={<AdminRoute><PageWrapper><AdminDashboard /></PageWrapper></AdminRoute>} />
+        <Route path="/admin/users" element={<AdminRoute><PageWrapper><AdminUsers /></PageWrapper></AdminRoute>} />
+        <Route path="/admin/jobs" element={<AdminRoute><PageWrapper><AdminJobs /></PageWrapper></AdminRoute>} />
       </Routes>
     </BrowserRouter>
   )
