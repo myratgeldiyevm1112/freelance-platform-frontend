@@ -28,7 +28,7 @@ function MyProfilePage() {
     queryFn: getMySkills,
   })
 
-  const skills = skillsData?.data ?? []
+  const skills = Array.isArray(skillsData?.data) ? skillsData.data : skillsData?.data?.items ?? []
   const me = meData ?? user
 
   const { register, handleSubmit, formState: { errors } } = useForm({
